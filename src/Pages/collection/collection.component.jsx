@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import './collection.styles.scss';
 
-import { selectCollectionsForPreview} from '../../redux/shop/shop.selector';
+import { selectCollection} from '../../redux/shop/shop.selector';
 import CollectionItem from '../../Components/collection-item/collection-item.component';
 
 const CollectionPage = ({ collection }) =>{ 
-   const { title , items} =collection
+   const { title , items} =  collection
 return(
     <div className='collection-page' >
         <h2 className='title' > {title} </h2>
@@ -20,7 +20,7 @@ return(
 )}
 
 const mapStateToProps = (state,ownProps) => ({
-    collection : selectCollectionsForPreview(ownProps.match.params.collectionId)(state)
+    collection : selectCollection(ownProps.match.params.collectionId)(state)
 });
 
 export default connect(mapStateToProps)(CollectionPage);
